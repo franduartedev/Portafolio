@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRANCISCO DUARTE Portafolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="particles-js"></div>
+    <header>
+      
+        <h1>  Francisco Duarte </h1>
+        <h2>Desarrollador web</h2>
+        <img src="fotocv.jpg" alt="foto de francisco duarte " srcset="">
+        
+      
+    </header>
+    <main>
+
+  <section class="sobremi">
+    <h3> <i class="fa-solid fa-user"></i> Sobre mí </h3>
+    <p>
+    Soy un desarrollador Front-End apasionado por crear interfaces modernas y funcionales, con enfoque en UX/UI. 
+    Actualmente inicié la <strong>Tecnicatura Universitaria en Programación en la UTN  </strong> donde estoy profundizando mis conocimientos en desarrollo de software y nuevas tecnologías.
+    He completado cursos certificados de Front-End por <strong>Coursera</strong> y <strong>Meta</strong>, y de CSS por <strong>NUCBA</strong>. Actualmente estoy trabajando en proyectos propios para seguir perfeccionando mis habilidades.
+  </p>
+  
+</section>
+
+  <section class="habilidades">
+    <h3><i class="fa-solid fa-star"></i> Habilidades </h3>
+    <ul>
+      <li> <i class="fa-brands fa-html5"></i> HTML</li>
+      <li> <i class="fa-brands fa-css3-alt"></i> CSS </li>
+      <li> <i class="fa-brands fa-js"></i> JavaScript</li>
+    </ul>
+  </section>
+
+  <section class="proyectos">
+    <h3><i class="fa-solid fa-folder"></i> Proyectos</h3>
+    <div class="card">
+  <img src="webinicio.png" alt="Proyecto 1">
+  <h3>Forex Inmobiliaria</h3>
+  <p>es un sitio web de venta de inmuebles basico para practicar con HTML, CSS y JavaScript</p>
+  <a href="/proyectos/inmo/index.html" class="btn-card">Ver más</a>
+   <div class="card">
+  <img src="notas.png" alt="Proyecto 2" id="imgcelu">
+  <h3>todo list</h3>
+  <p> To do list basico para practicar con HTML, CSS y JavaScript</p>
+  <a href="/proyectos/todo list/index.html" class="btn-card">Ver más</a>
+  
+</div>
+    </section>
+    
+
+    </main>
+    <footer>
+  <div class="contact-links">
+    <a href="mailto:fran.duarte.dev@gmail.com">
+      <i class="fa-solid fa-comments"></i> Contactame
+    </a>
+    <a href="http://www.linkedin.com/in/francisco-duarte-dev" target="_blank">
+      <i class="fa-brands fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/franduartedev" target="_blank">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+  </div>
+  <p>&copy; 2026 Francisco Duarte. Todos los derechos reservados.</p>
+</footer>
+  
+
+<script src="app.js"></script>
+<!-- Scripts al final -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {"value": 50},
+      "size": {"value": 3},
+      "color": {"value": "#1098F7"},
+      "line_linked": {"enable": true, "distance": 150, "color": "#1098F7", "opacity": 0.4, "width": 1},
+      "move": {"enable": true, "speed": 2}
+    }
+  });
+</script>
+</body>
+</html>
