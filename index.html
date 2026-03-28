@@ -1,93 +1,636 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRANCISCO DUARTE Portafolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francisco Duarte — Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --card: #16161f;
+      --accent: #4f8ef7;
+      --accent2: #7c3aed;
+      --text: #f0f0f5;
+      --muted: #7a7a90;
+      --border: rgba(255,255,255,0.07);
+      --mono: 'Space Mono', monospace;
+      --sans: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: var(--sans);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      padding: 100px 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,142,247,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+
+    .hero-desc strong { color: var(--text); font-weight: 400; }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 13px 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      font-family: var(--sans);
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    .btn-ghost {
+      padding: 13px 28px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+      font-family: var(--sans);
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+    .hero-photo-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .hero-photo {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo-fallback {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f8ef7, #7c3aed);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(79,142,247,0.25);
+      animation: spin 8s linear infinite;
+      border-top-color: var(--accent);
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* WRAPPER */
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      padding: 9px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-tag:hover { border-color: var(--accent); color: var(--text); }
+    .skill-tag.featured { border-color: rgba(79,142,247,0.4); color: var(--accent); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(79,142,247,0.3);
+      transform: translateY(-4px);
+    }
+
+    .project-img-placeholder {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      background: linear-gradient(135deg, #12122a, #1a1a3e);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-body { padding: 22px; }
+
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(79,142,247,0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .project-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .project-link {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover { gap: 12px; }
+
+    .project-card.empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      border-style: dashed;
+      gap: 8px;
+      cursor: default;
+    }
+
+    .project-card.empty:hover { transform: none; }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .about-text {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .about-text strong { color: var(--text); font-weight: 400; }
+
+    .about-stats { display: flex; flex-direction: column; gap: 14px; }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .stat-icon {
+      font-size: 20px;
+      width: 42px; height: 42px;
+      background: rgba(79,142,247,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+      font-family: var(--mono);
+      letter-spacing: 0.06em;
+    }
+
+    .stat-value {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* CONTACT */
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(79,142,247,0.4);
+      background: rgba(79,142,247,0.06);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .hero { grid-template-columns: 1fr; padding: 60px 20px 48px; gap: 32px; }
+      .hero-photo-wrap { display: none; }
+      .section-wrap { padding: 48px 20px; }
+      .about-grid { grid-template-columns: 1fr; }
+      footer { padding: 20px; flex-direction: column; gap: 8px; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero { animation: fadeUp 0.5s ease both; }
+    .section-wrap:nth-of-type(1) { animation: fadeUp 0.5s 0.1s ease both; }
+    .section-wrap:nth-of-type(2) { animation: fadeUp 0.5s 0.18s ease both; }
+    .section-wrap:nth-of-type(3) { animation: fadeUp 0.5s 0.26s ease both; }
+    .section-wrap:nth-of-type(4) { animation: fadeUp 0.5s 0.34s ease both; }
+  </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-    <header>
-      
-        <h1>  Francisco Duarte </h1>
-        <h2>Desarrollador web</h2>
-        <img src="fotocv.jpg" alt="foto de francisco duarte " srcset="">
-        
-      
-    </header>
-    <main>
 
-  <section class="sobremi">
-    <h3> <i class="fa-solid fa-user"></i> Sobre mí </h3>
-    <p>
-    Soy un desarrollador Front-End apasionado por crear interfaces modernas y funcionales, con enfoque en UX/UI. 
-    Actualmente inicié la <strong>Tecnicatura Universitaria en Programación en la UTN  </strong> donde estoy profundizando mis conocimientos en desarrollo de software y nuevas tecnologías.
-    He completado cursos certificados de Front-End por <strong>Coursera</strong> y <strong>Meta</strong>, y de CSS por <strong>NUCBA</strong>. Actualmente estoy trabajando en proyectos propios para seguir perfeccionando mis habilidades.
-  </p>
-  
-</section>
-
-  <section class="habilidades">
-    <h3><i class="fa-solid fa-star"></i> Habilidades </h3>
-    <ul>
-      <li> <i class="fa-brands fa-html5"></i> HTML</li>
-      <li> <i class="fa-brands fa-css3-alt"></i> CSS </li>
-      <li> <i class="fa-brands fa-js"></i> JavaScript</li>
+  <nav>
+    <span class="nav-logo">fd.dev</span>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
-  </section>
+  </nav>
 
-  <section class="proyectos">
-    <h3><i class="fa-solid fa-folder"></i> Proyectos</h3>
-    <div class="card">
-  <img src="webinicio.png" alt="Proyecto 1">
-  <h3>Forex Inmobiliaria</h3>
-  <p>es un sitio web de venta de inmuebles basico para practicar con HTML, CSS y JavaScript</p>
-  <a href="/proyectos/inmo/index.html" class="btn-card">Ver más</a>
-   <div class="card">
-  <img src="notas.png" alt="Proyecto 2" id="imgcelu">
-  <h3>todo list</h3>
-  <p> To do list basico para practicar con HTML, CSS y JavaScript</p>
-  <a href="/proyectos/todo list/index.html" class="btn-card">Ver más</a>
-  
-</div>
-    </section>
-    
-
-    </main>
-    <footer>
-  <div class="contact-links">
-    <a href="mailto:fran.duarte.dev@gmail.com">
-      <i class="fa-solid fa-comments"></i> Contactame
-    </a>
-    <a href="http://www.linkedin.com/in/francisco-duarte-dev" target="_blank">
-      <i class="fa-brands fa-linkedin"></i> LinkedIn
-    </a>
-    <a href="https://github.com/franduartedev" target="_blank">
-      <i class="fa-brands fa-github"></i> GitHub
-    </a>
+  <div class="hero">
+    <div>
+      <div class="hero-badge">Frontend Developer</div>
+      <h1>Francisco<br><span>Duarte</span></h1>
+      <p class="hero-desc">
+        Creo interfaces modernas y funcionales con foco en <strong>UX/UI</strong>.
+        Estudiante de la <strong>Tecnicatura UTN</strong> y autodidacta con certificaciones de
+        <strong>Meta</strong> y <strong>Coursera</strong>.
+      </p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="mailto:fran.duarte.dev@gmail.com">Contactame</a>
+        <a class="btn-ghost" href="https://github.com/franduartedev" target="_blank">Ver GitHub</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="fotocv.jpg" alt="Francisco Duarte"
+        onerror="this.style.display='none'; document.querySelector('.hero-photo-fallback').style.display='flex'">
+      <div class="hero-photo-fallback">FD</div>
+    </div>
   </div>
-  <p>&copy; 2026 Francisco Duarte. Todos los derechos reservados.</p>
-</footer>
-  
 
-<script src="app.js"></script>
-<!-- Scripts al final -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-  particlesJS("particles-js", {
-    "particles": {
-      "number": {"value": 50},
-      "size": {"value": 3},
-      "color": {"value": "#1098F7"},
-      "line_linked": {"enable": true, "distance": 150, "color": "#1098F7", "opacity": 0.4, "width": 1},
-      "move": {"enable": true, "speed": 2}
-    }
-  });
-</script>
+  <!-- HABILIDADES -->
+  <div class="section-wrap" id="sobre-mi">
+    <div class="section-label">Stack técnico</div>
+    <div class="section-title">Habilidades</div>
+    <div class="skills-grid">
+      <span class="skill-tag featured">HTML5</span>
+      <span class="skill-tag featured">CSS3</span>
+      <span class="skill-tag featured">JavaScript</span>
+      <span class="skill-tag">DOM manipulation</span>
+      <span class="skill-tag">Responsive design</span>
+      <span class="skill-tag">Git / GitHub</span>
+      <span class="skill-tag">UX / UI</span>
+      <span class="skill-tag">UTN — en progreso</span>
+    </div>
+  </div>
+
+  <!-- PROYECTOS -->
+  <div class="section-wrap" id="proyectos">
+    <div class="section-label">Trabajo</div>
+    <div class="section-title">Proyectos</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-img-placeholder">🏠</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">CSS</span>
+            <span class="project-tag">JS</span>
+          </div>
+          <div class="project-title">Forex Inmobiliaria</div>
+          <p class="project-desc">Sitio web de venta de inmuebles. Listado de propiedades con detalle de cada unidad.</p>
+          <a class="project-link" href="/proyectos/inmo/index.html">Ver proyecto →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder">✅</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">CSS</span>
+            <span class="project-tag">JS</span>
+          </div>
+          <div class="project-title">Todo List</div>
+          <p class="project-desc">Gestor de tareas con persistencia local, filtros por estado y edición en línea.</p>
+          <a class="project-link" href="/proyectos/todolist/index.html">Ver proyecto →</a>
+        </div>
+      </div>
+
+      <div class="project-card empty">
+        <div style="font-size:32px;opacity:0.2">+</div>
+        <div style="font-size:13px;color:var(--muted);text-align:center;padding:0 24px">
+          Próximo proyecto<br>
+          <span style="font-size:11px;font-family:var(--mono)">En construcción</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SOBRE MÍ -->
+  <div class="section-wrap">
+    <div class="section-label">Bio</div>
+    <div class="section-title">Sobre mí</div>
+    <div class="about-grid">
+      <p class="about-text">
+        Soy un desarrollador Front-End apasionado por crear interfaces modernas y funcionales,
+        con enfoque en UX/UI.<br><br>
+        Actualmente curso la <strong>Tecnicatura Universitaria en Programación en la UTN</strong>,
+        complementada con certificaciones de <strong>Coursera</strong>, <strong>Meta</strong>
+        y <strong>NUCBA</strong>.<br><br>
+        Enfocado en conseguir mis primeros clientes freelance mientras sigo creciendo técnicamente
+        y construyo proyectos reales.
+      </p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-icon">🎓</div>
+          <div>
+            <div class="stat-label">Formación actual</div>
+            <div class="stat-value">Tecnicatura UTN</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📜</div>
+          <div>
+            <div class="stat-label">Certificaciones</div>
+            <div class="stat-value">Meta · Coursera · NUCBA</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📍</div>
+          <div>
+            <div class="stat-label">Ubicación</div>
+            <div class="stat-value">Argentina</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💼</div>
+          <div>
+            <div class="stat-label">Disponibilidad</div>
+            <div class="stat-value">Freelance — disponible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div class="section-wrap" id="contacto">
+    <div class="section-label">Hablemos</div>
+    <div class="section-title">Contacto</div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:fran.duarte.dev@gmail.com">
+        <span>✉️</span> fran.duarte.dev@gmail.com
+      </a>
+      <a class="contact-link" href="http://www.linkedin.com/in/francisco-duarte-dev" target="_blank">
+        <span>💼</span> LinkedIn
+      </a>
+      <a class="contact-link" href="https://github.com/franduartedev" target="_blank">
+        <span>🐙</span> GitHub
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Francisco Duarte</p>
+    <p>HTML · CSS · JS</p>
+  </footer>
+
 </body>
 </html>
