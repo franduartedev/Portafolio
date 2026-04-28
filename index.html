@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -229,9 +230,7 @@ nav {
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 /* WRAPPER */
@@ -326,12 +325,6 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 
-.project-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
 .project-body {
   padding: 22px;
   display: flex;
@@ -413,137 +406,10 @@ nav {
   transition: gap 0.2s, color 0.2s;
 }
 
-.project-link:hover {
-  gap: 12px;
-}
+.project-link:hover { gap: 12px; }
 
-.project-link.secondary {
-  color: var(--muted);
-}
-
-.project-link.secondary:hover {
-  color: var(--text);
-}
-
-.project-card.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 320px;
-  border-style: dashed;
-  gap: 10px;
-  cursor: default;
-}
-
-.project-card.empty:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-.empty-icon {
-  font-size: 32px;
-  opacity: 0.2;
-}
-
-.empty-text {
-  font-size: 13px;
-  color: var(--muted);
-  text-align: center;
-  padding: 0 24px;
-}
-
-.empty-text span {
-  font-size: 11px;
-  font-family: var(--mono);
-}
-
-/* ABOUT */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.about-text {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.85;
-}
-
-.about-text strong {
-  color: var(--text);
-  font-weight: 400;
-}
-
-.about-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.stat-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.stat-icon {
-  font-size: 20px;
-  width: 42px;
-  height: 42px;
-  background: rgba(79,142,247,0.1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.stat-label {
-  font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 3px;
-  font-family: var(--mono);
-  letter-spacing: 0.06em;
-}
-
-.stat-value {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-/* CONTACT */
-.contact-links {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 700;
-  transition: border-color 0.2s, background 0.2s, transform 0.15s;
-}
-
-.contact-link:hover {
-  border-color: rgba(79,142,247,0.4);
-  background: rgba(79,142,247,0.06);
-  transform: translateY(-2px);
-}
+.project-link.secondary { color: var(--muted); }
+.project-link.secondary:hover { color: var(--text); }
 
 /* FOOTER */
 footer {
@@ -564,36 +430,16 @@ footer p {
 
 /* RESPONSIVE */
 @media (max-width: 700px) {
-  nav {
-    padding: 16px 20px;
-  }
-
-  .nav-links {
-    gap: 16px;
-  }
-
+  nav { padding: 16px 20px; }
+  .nav-links { gap: 16px; }
   .hero {
     grid-template-columns: 1fr;
     padding: 60px 20px 48px;
     gap: 32px;
   }
-
-  .hero-photo-wrap {
-    display: none;
-  }
-
-  .section-wrap {
-    padding: 48px 20px;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
+  .hero-photo-wrap { display: none; }
+  .section-wrap { padding: 48px 20px; }
+  .projects-grid { grid-template-columns: 1fr; }
   footer {
     padding: 20px;
     flex-direction: column;
@@ -602,14 +448,8 @@ footer p {
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
   </style>
 </head>
@@ -655,6 +495,7 @@ footer p {
       <span class="skill-tag">DOM manipulation</span>
       <span class="skill-tag">Responsive design</span>
       <span class="skill-tag">Git / GitHub</span>
+      <span class="skill-tag">Vite</span>
       <span class="skill-tag">UX / UI</span>
       <span class="skill-tag">UTN — en progreso</span>
     </div>
@@ -666,30 +507,51 @@ footer p {
 
     <div class="projects-grid">
 
+      <!-- ABOGADA — primero porque es el más relevante para clientes -->
+      <article class="project-card">
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg, #0f1a2e, #1c2e50);">⚖️</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">CSS</span>
+            <span class="project-tag">JS</span>
+            <span class="project-tag">Vite</span>
+          </div>
+          <h3 class="project-title">Dra. Valentina Moreno — Abogada</h3>
+          <p class="project-desc">
+            Landing page profesional para estudio jurídico. Diseño orientado a generar confianza,
+            con animaciones de scroll, botón de WhatsApp y formulario de contacto.
+          </p>
+          <ul class="project-features">
+            <li>Animaciones de scroll con Intersection Observer</li>
+            <li>Diseño responsive optimizado para mobile</li>
+            <li>Botón de WhatsApp flotante y formulario de contacto</li>
+          </ul>
+          <div class="project-actions">
+            <a class="project-link" href="https://franduartedev.github.io/demo-abogada/" target="_blank">Ver proyecto →</a>
+          </div>
+        </div>
+      </article>
+
       <!-- FOREX -->
       <article class="project-card">
         <div class="project-img-placeholder">🏠</div>
-
         <div class="project-body">
           <div class="project-tags">
             <span class="project-tag">HTML</span>
             <span class="project-tag">CSS</span>
             <span class="project-tag">JS</span>
           </div>
-
           <h3 class="project-title">Forex Inmobiliaria</h3>
-
           <p class="project-desc">
             Landing responsive para una inmobiliaria, con hero visual, grilla de propiedades,
             formulario de contacto y navegación adaptada a mobile.
           </p>
-
           <ul class="project-features">
             <li>Diseño responsive</li>
             <li>Menú hamburguesa con JavaScript</li>
             <li>Cards de propiedades con enfoque visual</li>
           </ul>
-
           <div class="project-actions">
             <a class="project-link" href="https://franduartedev.github.io/forex-inmobiliaria/" target="_blank">Ver proyecto →</a>
             <a class="project-link secondary" href="https://github.com/franduartedev/forex-inmobiliaria" target="_blank">Código ↗</a>
@@ -697,41 +559,9 @@ footer p {
         </div>
       </article>
 
-      <!-- TODO LIST -->
+      <!-- BUSCADOR PELICULAS -->
       <article class="project-card">
-        <div class="project-img-placeholder">✅</div>
-
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JS</span>
-          </div>
-
-          <h3 class="project-title">Todo List</h3>
-
-          <p class="project-desc">
-            Aplicación de tareas con manipulación del DOM, validación de input
-            y soporte para Enter para una interacción más rápida.
-          </p>
-
-          <ul class="project-features">
-            <li>Alta dinámica de tareas</li>
-            <li>Validación de campos vacíos</li>
-            <li>Limpieza completa de lista</li>
-          </ul>
-
-          <div class="project-actions">
-            <a class="project-link" href="https://franduartedev.github.io/to-do-list/" target="_blank">Ver proyecto →</a>
-            <a class="project-link secondary" href="https://github.com/franduartedev/to-do-list" target="_blank">Código ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- POKEMON APP -->
-      <article class="project-card">
-        <div class="project-img-placeholder">⚡</div>
-
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg, #1a0f2e, #2d1b4e);">🎬</div>
         <div class="project-body">
           <div class="project-tags">
             <span class="project-tag">HTML</span>
@@ -739,33 +569,46 @@ footer p {
             <span class="project-tag">JS</span>
             <span class="project-tag">API</span>
           </div>
+          <h3 class="project-title">Buscador de Películas</h3>
+          <p class="project-desc">
+            Aplicación web que consume una API externa para buscar películas en tiempo real,
+            con feedback visual y manejo de errores.
+          </p>
+          <ul class="project-features">
+            <li>Consumo de API con async/await</li>
+            <li>Búsqueda en tiempo real</li>
+            <li>Loading dinámico y manejo de errores</li>
+          </ul>
+          <div class="project-actions">
+            <a class="project-link" href="https://franduartedev.github.io/buscador-peliculas/" target="_blank">Ver proyecto →</a>
+          </div>
+        </div>
+      </article>
 
+      <!-- POKEMON APP -->
+      <article class="project-card">
+        <div class="project-img-placeholder">⚡</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">CSS</span>
+            <span class="project-tag">JS</span>
+            <span class="project-tag">API</span>
+          </div>
           <h3 class="project-title">Buscador de Pokémon</h3>
-
           <p class="project-desc">
             Aplicación web que consume la PokéAPI para buscar Pokémon en tiempo real,
             mostrando información dinámica con manejo de errores y feedback visual.
           </p>
-
           <ul class="project-features">
             <li>Consumo de API con async/await</li>
             <li>Loading dinámico y manejo de errores</li>
             <li>Tipos con colores dinámicos</li>
           </ul>
-
           <div class="project-actions">
             <a class="project-link" href="https://franduartedev.github.io/pokemon-search-app/" target="_blank">Ver proyecto →</a>
             <a class="project-link secondary" href="https://github.com/franduartedev/pokemon-search-app" target="_blank">Código ↗</a>
           </div>
-        </div>
-      </article>
-
-      <!-- FUTURO -->
-      <article class="project-card empty">
-        <div class="empty-icon">+</div>
-        <div class="empty-text">
-          Próximo proyecto<br>
-          <span>En construcción</span>
         </div>
       </article>
 
@@ -778,3 +621,4 @@ footer p {
   </footer>
 
 </body>
+</html>
