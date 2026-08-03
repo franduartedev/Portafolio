@@ -1,694 +1,173 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Francisco Duarte — Desarrollo Web & Soporte IT</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfolio de Francisco Duarte: soporte IT, desarrollo web, Python en formación y proyectos asistidos por IA.">
+  <title>Francisco Duarte // Portfolio</title>
   <style>
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --bg: #0a0a0f;
-  --surface: #111118;
-  --card: #16161f;
-  --accent: #4f8ef7;
-  --accent2: #7c3aed;
-  --text: #f0f0f5;
-  --muted: #7a7a90;
-  --border: rgba(255,255,255,0.07);
-  --mono: 'Space Mono', monospace;
-  --sans: 'Syne', sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--bg);
-  font-family: var(--sans);
-  color: var(--text);
-  min-height: 100vh;
-}
-
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 48px;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  background: rgba(10, 10, 15, 0.92);
-  backdrop-filter: blur(12px);
-  z-index: 10;
-}
-
-.nav-logo {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 13px;
-  color: var(--muted);
-  text-decoration: none;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: var(--text);
-}
-
-/* HERO */
-.hero {
-  padding: 100px 48px 80px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 48px;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-  max-width: 1100px;
-  margin: 0 auto;
-  animation: fadeUp 0.5s ease both;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(79, 142, 247, 0.10) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-badge {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.hero-badge::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.hero h1 {
-  font-size: clamp(48px, 7vw, 80px);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-}
-
-.hero h1 span {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-desc {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.75;
-  max-width: 560px;
-  margin-bottom: 36px;
-}
-
-.hero-desc strong {
-  color: var(--text);
-  font-weight: 400;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn-primary,
-.btn-ghost {
-  padding: 13px 28px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  transition: 0.2s ease;
-  font-family: var(--sans);
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: #fff;
-}
-
-.btn-primary:hover {
-  opacity: 0.88;
-  transform: translateY(-2px);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-
-.btn-ghost:hover {
-  border-color: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
-
-.hero-photo-wrap {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.hero-photo {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  object-fit: cover;
-  display: block;
-}
-
-.hero-photo-fallback {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #4f8ef7, #7c3aed);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  font-weight: 800;
-  color: #fff;
-}
-
-.hero-photo-wrap::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 1px solid rgba(79,142,247,0.25);
-  animation: spin 8s linear infinite;
-  border-top-color: var(--accent);
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* WRAPPER */
-.section-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 64px 48px;
-  border-bottom: 1px solid var(--border);
-}
-
-.section-wrap:nth-of-type(1) { animation: fadeUp 0.5s 0.1s ease both; }
-.section-wrap:nth-of-type(2) { animation: fadeUp 0.5s 0.18s ease both; }
-.section-wrap:nth-of-type(3) { animation: fadeUp 0.5s 0.26s ease both; }
-.section-wrap:nth-of-type(4) { animation: fadeUp 0.5s 0.34s ease both; }
-
-.section-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 36px;
-}
-
-/* SKILLS */
-.skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skill-tag {
-  padding: 9px 18px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.skill-tag:hover {
-  border-color: var(--accent);
-  color: var(--text);
-}
-
-.skill-tag.featured {
-  border-color: rgba(79,142,247,0.4);
-  color: var(--accent);
-}
-
-/* PROJECTS */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card:hover {
-  border-color: rgba(79,142,247,0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 18px 36px rgba(0,0,0,0.25);
-}
-
-.project-img-placeholder {
-  width: 100%;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 52px;
-  background: linear-gradient(135deg, #12122a, #1a1a3e);
-  border-bottom: 1px solid var(--border);
-}
-
-.project-body {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.project-tags {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-
-.project-tag {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(79,142,247,0.1);
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.project-title {
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-
-.project-desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 18px;
-}
-
-.project-features {
-  list-style: none;
-  margin-bottom: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-left: 0;
-}
-
-.project-features li {
-  font-size: 13px;
-  color: var(--text);
-  opacity: 0.92;
-  position: relative;
-  padding-left: 16px;
-}
-
-.project-features li::before {
-  content: "•";
-  color: var(--accent);
-  position: absolute;
-  left: 0;
-}
-
-.project-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: auto;
-}
-
-.project-link {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--accent);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: gap 0.2s, color 0.2s;
-}
-
-.project-link:hover { gap: 12px; }
-
-.project-link.secondary { color: var(--muted); }
-.project-link.secondary:hover { color: var(--text); }
-
-/* CONTACT */
-.contact-links {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 700;
-  transition: border-color 0.2s, background 0.2s, transform 0.15s;
-}
-
-.contact-link:hover {
-  border-color: rgba(79,142,247,0.4);
-  background: rgba(79,142,247,0.06);
-  transform: translateY(-2px);
-}
-
-.contact-link svg {
-  color: var(--muted);
-  flex-shrink: 0;
-}
-
-/* FOOTER */
-footer {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 28px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-footer p {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.06em;
-}
-
-/* RESPONSIVE */
-@media (max-width: 700px) {
-  nav { padding: 16px 20px; }
-  .nav-links { gap: 16px; }
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 60px 20px 48px;
-    gap: 32px;
-  }
-  .hero-photo-wrap { display: none; }
-  .section-wrap { padding: 48px 20px; }
-  .projects-grid { grid-template-columns: 1fr; }
-  footer {
-    padding: 20px;
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    :root{--bg:#050806;--panel:#0b110d;--line:#294b35;--green:#84ff9b;--amber:#ffd166;--cyan:#71e5ff;--text:#d8e7dc;--muted:#8aa392;--shadow:0 0 24px rgba(132,255,155,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:radial-gradient(circle at top,#0d1710 0,#050806 45%);color:var(--text);font-family:"Courier New",monospace;line-height:1.65;min-height:100vh}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 4px);z-index:20}
+    a{color:inherit}
+    .shell{width:min(1120px,calc(100% - 32px));margin:24px auto 50px;border:1px solid var(--line);background:rgba(5,8,6,.9);box-shadow:var(--shadow);position:relative}
+    .topbar{display:flex;justify-content:space-between;gap:16px;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+    .status{color:var(--green)}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,8,6,.94);backdrop-filter:blur(8px);z-index:10}
+    .logo{color:var(--green);font-weight:700;letter-spacing:.08em}
+    .nav-links{display:flex;gap:18px;list-style:none;flex-wrap:wrap}
+    .nav-links a{text-decoration:none;color:var(--muted);font-size:.82rem;text-transform:uppercase}
+    .nav-links a:hover{color:var(--green)}
+    section{padding:64px 34px;border-bottom:1px solid var(--line)}
+    .hero{min-height:540px;display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:38px}
+    .prompt{color:var(--green);margin-bottom:16px;font-size:.9rem}
+    h1{font-size:clamp(2.6rem,8vw,5.5rem);line-height:.95;letter-spacing:-.07em;text-transform:uppercase;margin-bottom:20px}
+    h1 span{color:var(--green);text-shadow:0 0 18px rgba(132,255,155,.25)}
+    .hero-copy{max-width:720px;color:var(--muted);font-size:1.02rem}
+    .hero-copy strong{color:var(--text)}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{display:inline-block;padding:12px 16px;border:1px solid var(--line);text-decoration:none;text-transform:uppercase;font-size:.8rem;letter-spacing:.06em;background:#09110c}
+    .btn.primary{border-color:var(--green);color:var(--green)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 0 16px rgba(132,255,155,.12)}
+    .terminal-card{border:1px solid var(--line);background:var(--panel);padding:20px;box-shadow:inset 0 0 30px rgba(132,255,155,.025)}
+    .terminal-card p{margin:8px 0;color:var(--muted)}
+    .terminal-card b{color:var(--green)}
+    .cursor{display:inline-block;width:9px;height:1em;background:var(--green);vertical-align:middle;animation:blink 1s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+    .section-head{margin-bottom:30px}
+    .kicker{color:var(--amber);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+    h2{font-size:clamp(1.8rem,4vw,2.8rem);text-transform:uppercase;letter-spacing:-.04em}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .card{border:1px solid var(--line);background:var(--panel);padding:22px;position:relative}
+    .card:before{content:"+";position:absolute;right:12px;top:8px;color:var(--line)}
+    .card h3{color:var(--green);margin-bottom:8px;text-transform:uppercase;font-size:1rem}
+    .card p{color:var(--muted);font-size:.92rem}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+    .tag{border:1px solid var(--line);padding:4px 8px;color:var(--cyan);font-size:.72rem}
+    .card-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+    .card-links a{color:var(--amber);font-size:.78rem;text-decoration:none;text-transform:uppercase}
+    .skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .skill{border:1px solid var(--line);padding:16px;background:var(--panel)}
+    .skill strong{display:block;color:var(--green);margin-bottom:6px}
+    .skill span{color:var(--muted);font-size:.82rem}
+    .timeline{display:grid;gap:16px}
+    .timeline-item{display:grid;grid-template-columns:170px 1fr;gap:20px;border-left:2px solid var(--line);padding-left:18px}
+    .timeline-item time{color:var(--amber);font-size:.8rem}
+    .timeline-item h3{color:var(--green);font-size:1rem}
+    .timeline-item p{color:var(--muted)}
+    .contact{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px}
+    .contact-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    footer{padding:20px 34px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:780px){.hero,.contact{grid-template-columns:1fr}.grid,.skills{grid-template-columns:1fr}.timeline-item{grid-template-columns:1fr;gap:4px}nav{align-items:flex-start;gap:16px;flex-direction:column}section{padding:48px 20px}.shell{width:min(100% - 16px,1120px);margin-top:8px}.topbar{display:none}}
   </style>
 </head>
 <body>
+  <main class="shell">
+    <div class="topbar"><span>FD-LABS / PERSONAL SYSTEM</span><span class="status">● disponible para oportunidades</span></div>
+    <nav>
+      <div class="logo">FRAN_DUARTE.EXE</div>
+      <ul class="nav-links">
+        <li><a href="#perfil">Perfil</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
 
-  <nav>
-    <span class="nav-logo">fd.dev</span>
-    <ul class="nav-links">
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <div class="hero">
-    <div>
-      <div class="hero-badge">Desarrollo Web & Soporte IT</div>
-      <h1>Francisco<br><span>Duarte</span></h1>
-      <p class="hero-desc">
-        Construyo proyectos web con <strong>JavaScript, React, Git y tecnologías modernas</strong>.
-        Actualmente busco mi primera oportunidad formal en IT, combinando desarrollo web,
-        soporte técnico y aprendizaje constante.
-      </p>
-      <div class="hero-cta">
-        <a class="btn-primary" href="Francisco_Duarte_CV_Soporte_IT.pdf" download>CV Soporte IT</a>
-        <a class="btn-ghost" href="Francisco_Duarte_CV_Frontend.pdf" download>CV Frontend</a>
-        <a class="btn-ghost" href="https://github.com/franduartedev" target="_blank">GitHub</a>
-        <a class="btn-ghost" href="https://www.linkedin.com/in/francisco-duarte-dev/" target="_blank">LinkedIn</a>
+    <section class="hero" id="perfil">
+      <div>
+        <p class="prompt">francis@linux:~/career$ whoami</p>
+        <h1>Francisco<br><span>Duarte</span></h1>
+        <p class="hero-copy"><strong>Estudiante de Programación y perfil IT junior</strong> con experiencia práctica en desarrollo web, soporte técnico, Linux y proyectos digitales. Actualmente profundizo Python con orientación a automatización, backend y APIs. Busco una oportunidad remota, híbrida o presencial para aprender, aportar y crecer profesionalmente.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn" href="mailto:fran.duarte.dev@gmail.com">Contactarme</a>
+          <a class="btn" href="https://github.com/franduartedev" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
       </div>
-    </div>
+      <aside class="terminal-card" aria-label="Resumen profesional">
+        <p><b>ROL_OBJETIVO</b>: Soporte IT / Desarrollo Junior</p>
+        <p><b>UBICACIÓN</b>: Buenos Aires, Argentina</p>
+        <p><b>IDIOMAS</b>: ES nativo / PT intermedio / EN básico</p>
+        <p><b>SISTEMAS</b>: Linux + Windows</p>
+        <p><b>ESTADO</b>: aprendiendo Python<span class="cursor"></span></p>
+      </aside>
+    </section>
 
-    <div class="hero-photo-wrap">
-      <img class="hero-photo" src="fotocv.jpg" alt="Francisco Duarte"
-        onerror="this.style.display='none'; document.querySelector('.hero-photo-fallback').style.display='flex'">
-      <div class="hero-photo-fallback">FD</div>
-    </div>
-  </div>
+    <section id="proyectos">
+      <div class="section-head"><p class="kicker">/proyectos_seleccionados</p><h2>Trabajo real y laboratorios</h2></div>
+      <div class="grid">
+        <article class="card">
+          <h3>La Esencia del Alma</h3>
+          <p>Sitio profesional entregado a una psicóloga, publicado con dominio propio, SSL e indexación. Experiencia real trabajando con necesidades de cliente y puesta en producción.</p>
+          <div class="tags"><span class="tag">Web real</span><span class="tag">Responsive</span><span class="tag">Vercel</span></div>
+          <div class="card-links"><a href="https://laesenciadelalma.com/" target="_blank" rel="noreferrer">Abrir sitio →</a></div>
+        </article>
 
-  <div class="section-wrap" id="sobre-mi">
-    <div class="section-label">Stack técnico</div>
-    <div class="section-title">Habilidades</div>
-    <div class="skills-grid">
-      <span class="skill-tag featured">HTML5</span>
-      <span class="skill-tag featured">CSS3</span>
-      <span class="skill-tag featured">JavaScript</span>
-      <span class="skill-tag featured">React</span>
-      <span class="skill-tag">Vite</span>
-      <span class="skill-tag">Git / GitHub</span>
-      <span class="skill-tag">Linux</span>
-      <span class="skill-tag">Windows</span>
-      <span class="skill-tag">Soporte IT</span>
-      <span class="skill-tag">C++</span>
-      <span class="skill-tag">Responsive design</span>
-      <span class="skill-tag">UTN — en progreso</span>
-    </div>
-  </div>
+        <article class="card">
+          <h3>Forja 3D</h3>
+          <p>Prototipo web asistido por IA para crear modelos 3D personalizables y exportables en STL. Trabajo en definición de producto, UX, testing funcional, reporte de bugs e iteración de funcionalidades.</p>
+          <div class="tags"><span class="tag">IA aplicada</span><span class="tag">Producto</span><span class="tag">3D / STL</span></div>
+          <div class="card-links"><a href="https://github.com/franduartedev/forja-3d" target="_blank" rel="noreferrer">Repositorio →</a></div>
+        </article>
 
-  <div class="section-wrap" id="proyectos">
-    <div class="section-label">Trabajo</div>
-    <div class="section-title">Proyectos</div>
+        <article class="card">
+          <h3>Pokémon React</h3>
+          <p>Aplicación desarrollada con React y Vite que consume PokeAPI. Incluye búsqueda, renderizado dinámico y práctica de componentes, estado y consumo de APIs.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">REST API</span></div>
+          <div class="card-links"><a href="https://pokemonreact-nine.vercel.app/" target="_blank" rel="noreferrer">Demo →</a><a href="https://github.com/franduartedev/pokemonreact" target="_blank" rel="noreferrer">Código →</a></div>
+        </article>
 
-    <div class="projects-grid">
+        <article class="card">
+          <h3>Control de Gastos</h3>
+          <p>Aplicación JavaScript para registrar gastos, validar datos, renderizar movimientos y calcular totales. Proyecto enfocado en lógica, DOM y organización del código.</p>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">DOM</span><span class="tag">Validación</span></div>
+          <div class="card-links"><a href="https://github.com/franduartedev/control-gastos-js" target="_blank" rel="noreferrer">Código →</a></div>
+        </article>
+      </div>
+    </section>
 
-      <!-- ABOGADA — primero porque es el más relevante para clientes -->
-      <article class="project-card">
-        <div class="project-img-placeholder" style="background: linear-gradient(135deg, #0f1a2e, #1c2e50);">⚖️</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JS</span>
-            <span class="project-tag">Vite</span>
-          </div>
-          <h3 class="project-title">Dr. Valentin Moreno — Abogado</h3>
-          <p class="project-desc">
-            Landing page profesional para estudio jurídico. Diseño orientado a generar confianza,
-            con animaciones de scroll, botón de WhatsApp y formulario de contacto.
-          </p>
-          <ul class="project-features">
-            <li>Animaciones de scroll con Intersection Observer</li>
-            <li>Diseño responsive optimizado para mobile</li>
-            <li>Botón de WhatsApp flotante y formulario de contacto</li>
-          </ul>
-          <div class="project-actions">
-            <a class="project-link" href="https://franduartedev.github.io/demo-abogado/" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
-      </article>
+    <section id="stack">
+      <div class="section-head"><p class="kicker">/habilidades</p><h2>Stack y herramientas</h2></div>
+      <div class="skills">
+        <div class="skill"><strong>Desarrollo web</strong><span>HTML, CSS, JavaScript, React, Vite, responsive design.</span></div>
+        <div class="skill"><strong>Python en formación</strong><span>Fundamentos, lógica, estructuras de datos, funciones y automatización.</span></div>
+        <div class="skill"><strong>Soporte IT</strong><span>Windows, Linux, instalación, diagnóstico, hardware y software.</span></div>
+        <div class="skill"><strong>Herramientas</strong><span>Git, GitHub, VS Code, Vercel, terminal Linux.</span></div>
+        <div class="skill"><strong>IA aplicada</strong><span>Generación guiada de código, iteración, testing y detección de errores.</span></div>
+        <div class="skill"><strong>Próximo objetivo</strong><span>FastAPI, SQL, APIs REST y automatizaciones con Python.</span></div>
+      </div>
+    </section>
 
-      <!-- FOREX -->
-      <article class="project-card">
-        <div class="project-img-placeholder">🏠</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JS</span>
-          </div>
-          <h3 class="project-title">Forex Inmobiliaria</h3>
-          <p class="project-desc">
-            Landing responsive para una inmobiliaria, con hero visual, grilla de propiedades,
-            formulario de contacto y navegación adaptada a mobile.
-          </p>
-          <ul class="project-features">
-            <li>Diseño responsive</li>
-            <li>Menú hamburguesa con JavaScript</li>
-            <li>Cards de propiedades con enfoque visual</li>
-          </ul>
-          <div class="project-actions">
-            <a class="project-link" href="https://franduartedev.github.io/forex-inmobiliaria/" target="_blank">Ver proyecto →</a>
-            <a class="project-link secondary" href="https://github.com/franduartedev/forex-inmobiliaria" target="_blank">Código ↗</a>
+    <section id="formacion">
+      <div class="section-head"><p class="kicker">/trayectoria</p><h2>Formación</h2></div>
+      <div class="timeline">
+        <div class="timeline-item"><time>ACTUALIDAD</time><div><h3>UTN — Tecnicatura Universitaria en Programación</h3><p>Formación en programación, algoritmos, sistemas, arquitectura y resolución de problemas.</p></div></div>
+        <div class="timeline-item"><time>FORMACIÓN COMPLEMENTARIA</time><div><h3>Desarrollo web y aprendizaje autodidacta</h3><p>Responsive Web Design, JavaScript, React, Git/GitHub, Linux y proyectos prácticos.</p></div></div>
+        <div class="timeline-item"><time>SECUNDARIO COMPLETO</time><div><h3>Bachiller en Economía</h3><p>Formación secundaria completa.</p></div></div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="contact">
+        <div>
+          <p class="kicker">/contacto</p>
+          <h2>¿Construimos algo?</h2>
+          <p class="hero-copy">Estoy buscando mi primera oportunidad profesional en IT, especialmente en soporte, desarrollo junior, QA, implementación o automatización.</p>
+          <div class="contact-links">
+            <a class="btn primary" href="mailto:fran.duarte.dev@gmail.com">Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/francisco-duarte-dev/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/franduartedev" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
-      </article>
+        <div class="terminal-card"><p><b>MODE</b>: open_to_work</p><p><b>REMOTE</b>: enabled</p><p><b>RELOCATION</b>: evaluable</p></div>
+      </div>
+    </section>
 
-      <!-- BUSCADOR PELICULAS -->
-      <article class="project-card">
-        <div class="project-img-placeholder" style="background: linear-gradient(135deg, #1a0f2e, #2d1b4e);">🎬</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JS</span>
-            <span class="project-tag">API</span>
-          </div>
-          <h3 class="project-title">Buscador de Películas</h3>
-          <p class="project-desc">
-            Aplicación web que consume una API externa para buscar películas en tiempo real,
-            con feedback visual y manejo de errores.
-          </p>
-          <ul class="project-features">
-            <li>Consumo de API con async/await</li>
-            <li>Búsqueda en tiempo real</li>
-            <li>Loading dinámico y manejo de errores</li>
-          </ul>
-          <div class="project-actions">
-            <a class="project-link" href="https://franduartedev.github.io/buscador-peliculas/" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- POKEMON APP -->
-      <article class="project-card">
-        <div class="project-img-placeholder">⚡</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JS</span>
-            <span class="project-tag">API</span>
-          </div>
-          <h3 class="project-title">Buscador de Pokémon</h3>
-          <p class="project-desc">
-            Aplicación web que consume la PokéAPI para buscar Pokémon en tiempo real,
-            mostrando información dinámica con manejo de errores y feedback visual.
-          </p>
-          <ul class="project-features">
-            <li>Consumo de API con async/await</li>
-            <li>Loading dinámico y manejo de errores</li>
-            <li>Tipos con colores dinámicos</li>
-          </ul>
-          <div class="project-actions">
-            <a class="project-link" href="https://franduartedev.github.io/pokemon-search-app/" target="_blank">Ver proyecto →</a>
-            <a class="project-link secondary" href="https://github.com/franduartedev/pokemon-search-app" target="_blank">Código ↗</a>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-
-  <div class="section-wrap" id="contacto">
-    <div class="section-label">Contacto</div>
-    <div class="section-title">Hablemos</div>
-    <div class="contact-links">
-      <a class="contact-link" href="Francisco_Duarte_CV_Soporte_IT.pdf" download>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
-        CV Soporte IT
-      </a>
-      <a class="contact-link" href="Francisco_Duarte_CV_Frontend.pdf" download>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
-        CV Frontend
-      </a>
-      <a class="contact-link" href="mailto:fran.duarte.dev@gmail.com">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        fran.duarte.dev@gmail.com
-      </a>
-      <a class="contact-link" href="https://www.instagram.com/fraan.dev/" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-        @fraan.dev
-      </a>
-      <a class="contact-link" href="https://www.linkedin.com/in/francisco-duarte-dev/" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-      <a class="contact-link" href="https://github.com/franduartedev" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2026 Francisco Duarte</p>
-    <p>Desarrollo Web · Soporte IT · Programación</p>
-  </footer>
-
+    <footer><span>© 2026 Francisco Duarte</span><span>Build. Explore. Innovate.</span></footer>
+  </main>
 </body>
 </html>
