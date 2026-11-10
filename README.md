@@ -1,98 +1,64 @@
 # Portfolio de Francisco Duarte
 
-Portfolio personal desarrollado para presentar mi perfil profesional, proyectos, experiencia y datos de contacto.
+Sitio personal para presentar mi identidad como **creador de productos tecnológicos y fundador de FD Labs**, junto con mi formación y búsqueda de una primera oportunidad profesional **Trainee/Junior** en Soporte IT, Help Desk, QA o Desarrollo de Software.
 
-Actualmente mi formación está orientada a **Python, backend y automatización**, manteniendo experiencia previa en desarrollo frontend, soporte IT y proyectos maker.
+**Sitio público:** [franduartedev.github.io/Portafolio](https://franduartedev.github.io/Portafolio/)
 
-## Demo
+## Perfil
 
-[Ver portfolio online](https://franduartedev.github.io/Portafolio/)
+Soy estudiante de la **Tecnicatura Universitaria en Programación en UTN**. Tengo experiencia práctica en desarrollo web freelance, atención a usuarios, soporte de aplicaciones y resolución de incidencias. Estoy abierto a oportunidades remotas, híbridas y presenciales.
 
-## Objetivo del proyecto
+**Experiencia informada:**
 
-El sitio funciona como punto central de mi presencia profesional. Desde allí se puede acceder a:
+- Desarrollo web freelance desde 2023, con proyectos web publicados para clientes.
+- Operación de plataforma digital desde 2024: atención a usuarios, validación de operaciones, registro de incidencias y resolución de consultas.
 
-- proyectos destacados;
-- GitHub;
-- LinkedIn;
-- experiencia y formación;
-- tecnologías utilizadas;
-- medios de contacto.
+## Autoría y colaboración con IA
 
-## Tecnologías utilizadas
+FD Labs es el espacio donde impulso ideas de productos tecnológicos con el lema **Build. Explore. Innovate.**
 
-- HTML5
-- CSS3
-- JavaScript
-- Git y GitHub
-- GitHub Pages
+En **PULSAR**, **FORJA 3D** y **ZONALERO**, mi aporte principal es la ideación, la visión del producto y la dirección creativa. Gran parte de la implementación técnica se hizo con herramientas de inteligencia artificial. Estos proyectos no se presentan como prueba de que escribí individualmente todo su código ni de que tomé cada decisión de arquitectura.
 
-## Características
+Mis conocimientos y experiencia técnica se muestran de forma separada de esa autoría de producto.
 
-- Diseño responsive.
-- Estética retro tecnológica en azul y cian.
-- Presentación clara de proyectos y experiencia.
-- Enlaces directos a código, demos y perfiles profesionales.
-- Sitio estático liviano y rápido.
+## Proyectos destacados
 
-## Identidad visual
+- [PULSAR](https://github.com/franduartedev/pulsar): editor de video de escritorio para Linux; C++, Qt 6 y FFmpeg. La versión pública está en beta.
+- [FORJA 3D](https://github.com/franduartedev/forja-3d): editor web 3D que exporta STL, 3MF y STEP. [Abrir demo](https://forja-3d.frn81.chatgpt.site).
+- [SATURN Control](https://github.com/franduartedev/saturn-control): macro pad DIY con Arduino Pro Micro y aplicación local Python/Flask.
+- [La Esencia del Alma](https://github.com/franduartedev/demopsi): sitio profesional publicado para una clienta. [Abrir sitio](https://laesenciadelalma.com/).
+- [Solutions Tech Studios](https://github.com/franduartedev/solutions-tech-studios): demo web configurable para estudios profesionales. [Abrir demo](https://franduartedev.github.io/solutions-tech-studios/).
+- **ZONALERO:** proyecto de simulador argentino en desarrollo bajo FD Labs; todavía no hay un repositorio público asociado en esta cuenta.
 
-La interfaz utiliza una estética inspirada en terminales, paneles retro y sistemas tecnológicos, con una paleta azul oscuro, azul eléctrico y cian.
+## Tecnologías
 
-La intención es transmitir una identidad personal ligada a programación, Linux, hardware, automatización y proyectos de **FD Labs**.
+C# · C++ · Python · SQL · React · JavaScript · TypeScript · HTML · CSS · Git · Windows · Linux
 
-## Estructura del repositorio
+**Idiomas:** español nativo · inglés B1 · portugués B1.
 
-```text
-Portafolio/
-├── index.html
-├── app.js
-├── fotocv.jpg
-├── notas.png
-├── documentos PDF
-└── README.md
-```
+## Desarrollo local
 
-## Ejecutar localmente
-
-Cloná el repositorio:
+Es un sitio estático sin proceso de compilación ni dependencias de Node.
 
 ```bash
 git clone https://github.com/franduartedev/Portafolio.git
 cd Portafolio
+python -m http.server 8000
 ```
 
-Después abrí `index.html` en el navegador.
+Abrí [http://localhost:8000](http://localhost:8000). También podés abrir `index.html` directamente en un navegador.
 
-No requiere instalación de dependencias ni proceso de compilación.
+## Archivos principales
 
-## Proyectos presentados
+- `index.html`: contenido, estructura y estilos del sitio.
+- `fotocv.jpg`: imagen utilizada por el portfolio.
+- `notas.png`: recurso gráfico.
+- `Francisco_Duarte_CV_Frontend.pdf` y `Francisco_Duarte_CV_Soporte_IT.pdf`: documentos existentes en el repositorio. No se modifican desde este proyecto de actualización.
 
-El portfolio incluye proyectos de distintas etapas de aprendizaje:
-
-- desarrollo web con JavaScript y React;
-- aplicaciones publicadas para clientes reales;
-- automatización y software con Python;
-- integración entre software y hardware;
-- prototipos de producto asistidos por IA.
-
-## Estado
-
-Proyecto activo y en mejora continua.
-
-Próximas actualizaciones previstas:
-
-- incorporar proyectos de Python y backend;
-- actualizar el posicionamiento profesional;
-- sumar el Gestor de Misiones;
-- agregar futuras APIs con FastAPI y PostgreSQL;
-- revisar documentos y enlaces desactualizados;
-- mejorar accesibilidad y semántica.
-
-## Autor
-
-Desarrollado por [Francisco Duarte](https://github.com/franduartedev).
+## Contacto
 
 - [LinkedIn](https://www.linkedin.com/in/francisco-duarte-dev/)
 - [GitHub](https://github.com/franduartedev)
-- Email: fran.duarte.dev@gmail.com
+- [Email](mailto:fran.duarte.dev@gmail.com)
+
+**FD Labs — Build. Explore. Innovate.**
